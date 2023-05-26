@@ -25,6 +25,7 @@ let nosedef = "（蓮霧鼻、鷹勾鼻、朝天鼻、酒糟鼻）"
 let mouthdef = "（櫻桃小嘴、香腸嘴、大小嘴、厚薄唇）"
 let eardef = "（菩薩耳、招風耳、米老鼠耳、大小耳）"
 let shapedef = "（正倒三角、圓臉、方臉、瓜子臉）"
+
 class translate6: UIViewController, UITextFieldDelegate{
 
     @IBOutlet weak var featurelabel: UILabel!
@@ -48,40 +49,61 @@ class translate6: UIViewController, UITextFieldDelegate{
     
     
     @IBAction func surepressed(_ sender: UIButton) {
-        switch choose {
-                case features[0]:
-                    eyelabel.text = searchbar.text!
-                    print(searchbar.text!)
-                    mydict[features[0]] = "\(searchbar.text!)"
-                    
-                case features[1]:
-                    eyebrowlabel.text = searchbar.text!
-                    print(searchbar.text!)
-                    mydict[features[1]] = "\(searchbar.text!)"
-                    
-                case features[2]:
-                    noselabel.text = searchbar.text!
-                    print(searchbar.text!)
-                    mydict[features[2]] = "\(searchbar.text!)"
-                    
-                case features[3]:
-                    mouthlabel.text = searchbar.text!
-                    print(searchbar.text!)
-                    mydict[features[3]] = "\(searchbar.text!)"
-                    
-                case features[4]:
-                    earlabel.text = searchbar.text!
-                    print(searchbar.text!)
-                    mydict[features[4]] = "\(searchbar.text!)"
-                
-                case features[5]:
-                    shapelabel.text = searchbar.text!
-                    print(searchbar.text!)
-                    mydict[features[5]] = "\(searchbar.text!)"
-                    
-                default:
-                    print("error")
+        let ans = searchbar.text!.split(separator: "")
+        for number1 in 0...myspecialwords.count-1{
+            for number2 in 0...ans.count-1{
+                if ans[number2] == myspecialwords[number1]{
+                    searchbar.text = "請不要輸入不雅文字!"
+                    break
                 }
+            }
+        }
+        
+        for number in 0...mysensitivewords.count-1{
+            if searchbar.text! == mysensitivewords[number]{
+                searchbar.text = "請不要輸入不雅文字!"
+                break
+            }
+        }
+        if searchbar.text == "請不要輸入不雅文字!"{
+            
+        }else{
+            switch choose {
+                    case features[0]:
+                        eyelabel.text = searchbar.text!
+                        print(searchbar.text!)
+                        mydict[features[0]] = "\(searchbar.text!)"
+                        
+                    case features[1]:
+                        eyebrowlabel.text = searchbar.text!
+                        print(searchbar.text!)
+                        mydict[features[1]] = "\(searchbar.text!)"
+                        
+                    case features[2]:
+                        noselabel.text = searchbar.text!
+                        print(searchbar.text!)
+                        mydict[features[2]] = "\(searchbar.text!)"
+                        
+                    case features[3]:
+                        mouthlabel.text = searchbar.text!
+                        print(searchbar.text!)
+                        mydict[features[3]] = "\(searchbar.text!)"
+                        
+                    case features[4]:
+                        earlabel.text = searchbar.text!
+                        print(searchbar.text!)
+                        mydict[features[4]] = "\(searchbar.text!)"
+                    
+                    case features[5]:
+                        shapelabel.text = searchbar.text!
+                        print(searchbar.text!)
+                        mydict[features[5]] = "\(searchbar.text!)"
+                        
+                    default:
+                        print("error")
+                    }
+        }
+        
 
     }
     

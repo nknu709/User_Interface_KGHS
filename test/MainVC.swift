@@ -18,6 +18,10 @@ class MainVC: UIViewController {
         self.performSegue(withIdentifier: "segue_dish", sender: self)
     }
     
+    @IBAction func street(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "segue_street", sender: self)
+    }
+    
     @IBAction func UnWind(for segue :UIStoryboardSegue){
         print("unwind...")
     }
